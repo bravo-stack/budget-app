@@ -16,22 +16,32 @@ const ActiveLink = ({ to, text, IconName }: ActiveLinkProps & NavLinkProps) => {
         <NavLink
             end
             to={to}
-            className='flex flex-col gap-2 items-center hover:no-underline'
+            className={`flex pc:w-full flex-col pc:flex-row gap-2 pc:gap-4 items-center hover:no-underline pc:p-5 pc:hover:opacity-80 pc:rounded-2xl ${
+                isActive && 'pc:bg-white'
+            }`}
         >
             {/* icon */}
             {isActive ? (
-                <Icon as={IconName} color='#0466C8' className='text-2xl' />
+                <Icon
+                    as={IconName}
+                    color='#0466C8'
+                    className='text-2xl pc:text-3xl'
+                />
             ) : (
-                <Icon as={IconName} color='#C1C4CD' className='text-2xl' />
+                <Icon
+                    as={IconName}
+                    color='#C1C4CD'
+                    className='text-2xl pc:text-3xl pc:text-white'
+                />
             )}
 
             {/* text */}
             {isActive ? (
-                <span className='font-medium text-xs text-[#001233]'>
+                <span className='font-medium pc:font-bold text-xs pc:text-lg text-[#001233] pc:text-[#0466C8]'>
                     {text}
                 </span>
             ) : (
-                <span className='font-normal text-xs text-[#C1C4CD]'>
+                <span className='font-normal text-xs pc:text-lg text-[#C1C4CD] pc:text-white'>
                     {text}
                 </span>
             )}
